@@ -1,7 +1,7 @@
-## ⚠️ Important Note for Judges
+# 🌿 Ecopal Nature Explorer
 
-Due to API usage limits during development and testing, the live demo may show limited real-time responses. However, the complete technical implementation is available in the code, and a [demonstration video](#) shows all features functioning with live API responses.
-The platform is fully functional when API credits are available, as evidenced by the comprehensive Perplexity integration in the codebase.
+>> **⚠️ Demo Limitation**: API credits exhausted. Add your free [Perplexity API key](https://www.perplexity.ai/settings/api) to `.env` for full functionality.
+
 
 # 🌿 Ecopal Nature Explorer
 
