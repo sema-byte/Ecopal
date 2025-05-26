@@ -55,8 +55,8 @@ An interactive wellness platform that promotes child development through AI-powe
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/ecopal-nature-explorer.git
-   cd ecopal-nature-explorer
+   git clone https://github.com/sema-byte/Ecopal.git
+   cd Ecopal
    ```
 
 2. **Set up the backend**
