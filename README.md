@@ -1,6 +1,6 @@
 # 🌿 Ecopal Nature Explorer
 
-An interactive educational web application that teaches children about nature through AI-powered chatbots, articles, and quizzes. Built with React frontend and Python Flask backend, powered by Perplexity AI.
+An interactive wellness platform that promotes child development through AI-powered nature education, combating screen addiction and supporting healthy learning habits for children aged 4-12.
 
 **Target Audience:** Children aged 4-12 years (younger children may need parental guidance)
 
@@ -25,7 +25,8 @@ An interactive educational web application that teaches children about nature th
 - 12 different nature categories
 - Immediate feedback with explanations
 - Fun facts with educational sources
-- Score tracking and encouraging responses
+- **Promotes Mental Wellbeing**: Encourages curiosity and reduces screen anxiety through meaningful nature interactions
+- **Supports Healthy Development**: Evidence-based content that promotes cognitive growth and environmental awareness
 
 ## 🛠️ Technology Stack
 
@@ -146,12 +147,12 @@ The app covers these educational topics:
 - **Earth Science**: Volcanoes, Weather Patterns, Rock Cycles
 - **Ecosystems**: Coral Reefs, Freshwater Habitats, Migration
 
-### Educational Standards
-- Content appropriate for ages 4-12
+### Educational & Wellness Standards
+- Content designed to support healthy child development for ages 4-12
 - Multiple difficulty levels (very easy, easy, medium)
 - Elementary school vocabulary levels
-- Real educational sources and citations
-- Positive, encouraging messaging
+- Real educational sources and citations that build media literacy
+- Positive, encouraging messaging for emotional wellbeing
 - Safe, non-scary content
 
 ## 🔮 Future Features
@@ -227,6 +228,22 @@ curl -X POST http://localhost:5000/api/chat \
 - Ensure all React dependencies are installed
 - Check file paths in import statements
 
+## 📊 API Usage
+
+The application uses the Perplexity API efficiently:
+- **Chat**: ~150 tokens per response
+- **Articles**: ~800 tokens per article
+- **Quizzes**: ~1500 tokens per quiz
+
+Monitor your API usage through the Perplexity dashboard.
+
+## 🎨 Customization
+
+### Styling
+The app uses Tailwind CSS with custom color schemes:
+- `ecoGreen`: Primary nature theme
+- `ecoBlue`: Secondary water theme
+- `ecoPink`: Accent colors
 
 ### Content
 Modify prompts in `ALL.py` to adjust:
