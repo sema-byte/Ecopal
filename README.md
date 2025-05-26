@@ -1,73 +1,244 @@
-# Welcome to your Lovable project
+# 🌿 Ecopal Nature Explorer
 
-## Project info
+An interactive educational web application that teaches children about nature through AI-powered chatbots, articles, and quizzes. Built with React frontend and Python Flask backend, powered by Perplexity AI.
 
-**URL**: https://lovable.dev/projects/9589df9a-b48b-455c-8dd3-fbe0ca0acc13
+**Target Audience:** Children aged 4-12 years (younger children may need parental guidance)
 
-## How can I edit this code?
+## 🌟 Features
 
-There are several ways of editing your application.
+### 🦊 **EcoBot - Nature Chatbot**
+- Interactive AI chatbot specialized in nature topics for kids aged 4-12
+- Uses simple vocabulary and engaging emojis
+- Provides educational facts with citations
+- Remembers conversation context
+- Kid-safe responses focused only on nature
 
-**Use Lovable**
+### 📰 **Daily Nature Articles**
+- Auto-generated educational articles about different nature topics
+- Covers 31 different categories (rainforests, animals, weather, etc.)
+- Includes fun facts, activities, and real citations
+- Changes daily based on calendar
+- Written for elementary school reading levels (adjustable complexity)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/9589df9a-b48b-455c-8dd3-fbe0ca0acc13) and start prompting.
+### 🧩 **Interactive Nature Quiz**
+- 5-question quizzes with multiple difficulty levels
+- 12 different nature categories
+- Immediate feedback with explanations
+- Fun facts with educational sources
+- Score tracking and encouraging responses
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Technology Stack
 
-**Use your preferred IDE**
+### Frontend
+- **React** with TypeScript
+- **Tailwind CSS** for styling
+- **Lovable** for component creation
+- **Lucide React** for icons
+- **Sonner** for notifications
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Backend
+- **Python 3.8+**
+- **Flask** web framework
+- **Flask-CORS** for cross-origin requests
+- **Perplexity AI API** for content generation
+- **python-dotenv** for environment variables
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Quick Start
 
-Follow these steps:
+### Prerequisites
+- Node.js 16+ and npm/yarn
+- Python 3.8+
+- Perplexity AI API key
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/ecopal-nature-explorer.git
+   cd ecopal-nature-explorer
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. **Set up the backend**
+   ```bash
+   # Install Python dependencies
+   pip install flask flask-cors python-dotenv requests
+   
+   # Create environment file
+   echo "PERPLEXITY_API_KEY=your_api_key_here" > .env
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+3. **Set up the frontend**
+   ```bash
+   # Install Node.js dependencies
+   npm install
+   
+   # or with yarn
+   yarn install
+   ```
+
+4. **Get your Perplexity API key**
+   - Visit [Perplexity AI](https://www.perplexity.ai/settings/api)
+   - Create an account and generate an API key
+   - Add it to your `.env` file
+
+### Running the Application
+
+1. **Start the backend server**
+   ```bash
+   python api.py
+   ```
+   The Flask server will run on `http://localhost:5000`
+
+2. **Start the frontend** (in a new terminal)
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+   The React app will run on `http://localhost:3000`
+
+3. **Open your browser**
+   Navigate to `http://localhost:3000` to use the application
+
+## 📁 Project Structure
+
+```
+ecopal-nature-explorer/
+├── public/                 # Static assets
+├── src/
+│   ├── components/         # React components
+│   │   ├── features/       # Main feature components
+│   │   │   ├── ChatBot.tsx
+│   │   │   ├── NatureArticle.tsx
+│   │   │   └── NatureQuiz.tsx
+│   │   └── EcoMascot.tsx
+│   ├── lib/
+│   │   └── api.ts         # API client functions
+│   └── App.tsx            # Main app component
+├── ALL.py                 # Core Python logic
+├── api.py                 # Flask API server
+├── .env                   # Environment variables
+└── README.md
 ```
 
-**Edit a file directly in GitHub**
+## 🔧 Configuration
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Environment Variables
+Create a `.env` file in the root directory:
+```env
+PERPLEXITY_API_KEY=pplx-your-api-key-here
+```
 
-**Use GitHub Codespaces**
+### API Configuration
+The application uses the Perplexity `sonar-pro` model for high-quality educational content. You can modify the model and parameters in `ALL.py`:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```python
+def call_perplexity_api(messages, model="sonar-pro", temperature=0.7):
+    # API configuration
+```
 
-## What technologies are used for this project?
+## 🎯 Features in Detail
 
-This project is built with:
+### Nature Categories
+The app covers these educational topics:
+- **Animals**: Desert Animals, Arctic Wildlife, Ocean Animals, etc.
+- **Plants**: Rainforests, Photosynthesis, Seed Dispersal
+- **Earth Science**: Volcanoes, Weather Patterns, Rock Cycles
+- **Ecosystems**: Coral Reefs, Freshwater Habitats, Migration
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Educational Standards
+- Content appropriate for ages 4-12
+- Multiple difficulty levels (very easy, easy, medium)
+- Elementary school vocabulary levels
+- Real educational sources and citations
+- Positive, encouraging messaging
+- Safe, non-scary content
 
-## How can I deploy this project?
+## 🔮 Future Features
 
-Simply open [Lovable](https://lovable.dev/projects/9589df9a-b48b-455c-8dd3-fbe0ca0acc13) and click on Share -> Publish.
+- **Voice Assistance**: Audio support for reading articles and questions aloud
+- **Speech Recognition**: Voice input for chatbot conversations
+- **Audio Feedback**: Spoken responses and explanations
+- **Accessibility**: Enhanced support for children with reading difficulties
 
-## Can I connect a custom domain to my Lovable project?
+## 🚀 Performance Optimizations
 
-Yes, you can!
+The application includes several performance optimizations:
+- Streamlined API calls for faster responses
+- Quick response cache for common chat inputs
+- Optimized timeout settings
+- Fallback responses for reliability
+- Reduced conversation history for efficiency
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🔒 Safety Features
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- Kid-safe content filtering
+- Nature-only topic restriction
+- No violent or scary content
+- Educational source citations
+- Age-appropriate vocabulary
+
+## 🛠️ Development
+
+### Adding New Features
+1. **New Nature Categories**: Add to the `categories` array in `ALL.py`
+2. **New Quiz Topics**: Add to `quiz_categories` in the `NatureQuiz` class
+3. **UI Components**: Create new React components in `src/components/`
+
+### API Endpoints
+- `POST /api/chat` - Chatbot conversations
+- `GET /api/article` - Generate nature articles
+- `GET /api/quiz?difficulty={level}` - Generate quizzes
+
+### Testing
+```bash
+# Test the API endpoints
+curl -X POST http://localhost:5000/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Hello", "isFirstMessage": true}'
+```
+
+## 📝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/new-feature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/new-feature`)
+5. Create a Pull Request
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**401 Authorization Error**
+- Check your Perplexity API key in `.env`
+- Ensure the API key is valid and has credits
+
+**CORS Errors**
+- Verify Flask-CORS is installed: `pip install flask-cors`
+- Check that `CORS(app)` is in your `api.py`
+
+**Slow Responses**
+- Check your internet connection
+- Consider upgrading your Perplexity plan
+- Verify API timeout settings
+
+**Component Import Errors**
+- Ensure all React dependencies are installed
+- Check file paths in import statements
+
+
+### Content
+Modify prompts in `ALL.py` to adjust:
+- Article length and complexity
+- Quiz difficulty levels
+- Chatbot personality
+- Educational focus areas
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+Made with 🌱 for young nature explorers everywhere!
