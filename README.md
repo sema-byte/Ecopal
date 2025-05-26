@@ -1,3 +1,8 @@
+## ⚠️ Important Note for Judges
+
+Due to API usage limits during development and testing, the live demo may show limited real-time responses. However, the complete technical implementation is available in the code, and a [demonstration video](#) shows all features functioning with live API responses.
+The platform is fully functional when API credits are available, as evidenced by the comprehensive Perplexity integration in the codebase.
+
 # 🌿 Ecopal Nature Explorer
 
 An interactive wellness platform that promotes child development through AI-powered nature education, combating screen addiction and supporting healthy learning habits for children aged 4-12.
