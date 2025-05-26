@@ -1,6 +1,5 @@
-# 🌿 Ecopal Nature Explorer
 
->> **⚠️ Demo Limitation**: API credits exhausted. Add your free [Perplexity API key](https://www.perplexity.ai/settings/api) to `.env` for full functionality.
+> **⚠️ API Credits Exhausted**: Demo API credits have been used during development. To experience full AI functionality, clone the repo and add `PERPLEXITY_API_KEY=your_key_here` to the `.env` file with your free [Perplexity API key](https://www.perplexity.ai/settings/api).
 
 
 # 🌿 Ecopal Nature Explorer
