@@ -102,7 +102,7 @@ const NatureArticle = ({ onBack }: NatureArticleProps) => {
               <div className="relative">
                 <EcoMascot 
                   image="/lovable-uploads/f65f8a63-0172-4b0c-9f71-907eb0defff8.png" 
-                  animation="spin"
+                  // animation="spin"
                   size="md"
                 />
               </div>

@@ -18,12 +18,14 @@ const ChatBot = ({ onBack }: ChatBotProps) => {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState<string | null>(null);
+  const [typingMessage, setTypingMessage] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Scroll to bottom of messages
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, typingMessage]);
 
   // Initial greeting
   useEffect(() => {
@@ -36,6 +38,34 @@ const ChatBot = ({ onBack }: ChatBotProps) => {
       ]);
     }
   }, []);
+
+  const typeMessage = (fullMessage: string) => {
+    setIsTyping(true);
+    setTypingMessage("");
+    
+    let currentIndex = 0;
+    const typingSpeed = 50; // milliseconds per character
+    
+    const typeInterval = setInterval(() => {
+      if (currentIndex < fullMessage.length) {
+        setTypingMessage(fullMessage.slice(0, currentIndex + 1));
+        currentIndex++;
+      } else {
+        clearInterval(typeInterval);
+        setIsTyping(false);
+        setTypingMessage("");
+        
+        // Add the complete message to the messages array
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "assistant",
+            content: fullMessage,
+          },
+        ]);
+      }
+    }, typingSpeed);
+  };
 
   const handleSendMessage = async () => {
     if (!input.trim()) return;
@@ -60,13 +90,9 @@ const ChatBot = ({ onBack }: ChatBotProps) => {
       // Call the actual API 
       const response = await sendChatMessage(userMessage, isFirstMessage);
       
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: response,
-        },
-      ]);
+      // Start typing animation
+      typeMessage(response);
+      
     } catch (error) {
       toast.error("Oops! Something went wrong. Please try again.");
     } finally {
@@ -81,6 +107,8 @@ const ChatBot = ({ onBack }: ChatBotProps) => {
     }
   };
 
+  const [mascotImage, setMascotImage] = useState("");
+
   const getMascotImage = () => {
     const images = [
       "/lovable-uploads/f65f8a63-0172-4b0c-9f71-907eb0defff8.png",
@@ -89,6 +117,20 @@ const ChatBot = ({ onBack }: ChatBotProps) => {
     ];
     return images[Math.floor(Math.random() * images.length)];
   };
+
+  // Set initial mascot image and change it less frequently
+  useEffect(() => {
+    if (!mascotImage) {
+      setMascotImage(getMascotImage());
+    }
+  }, []);
+
+  // Change mascot image only when user sends a new message (not during typing)
+  useEffect(() => {
+    if (messages.length > 0 && messages[messages.length - 1]?.role === "user") {
+      setMascotImage(getMascotImage());
+    }
+  }, [messages]);
 
   return (
     <div className="flex flex-col h-full">
@@ -113,10 +155,20 @@ const ChatBot = ({ onBack }: ChatBotProps) => {
                   message.role === "user" ? "chat-bubble-user" : "chat-bubble-bot"
                 }`}
               >
-                {message.content}
+                {message.content.split('\n').map((line, lineIndex) => (
+                  <div key={lineIndex}>{line}</div>
+                ))}
               </div>
             ))}
-            {isLoading && (
+            {isTyping && (
+              <div className="chat-bubble-bot">
+                {typingMessage.split('\n').map((line, lineIndex) => (
+                  <div key={lineIndex}>{line}</div>
+                ))}
+                <span className="animate-pulse">|</span>
+              </div>
+            )}
+            {isLoading && !isTyping && (
               <div className="chat-bubble-bot">
                 <div className="flex gap-1">
                   <div className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: "0.1s" }} />
@@ -131,8 +183,8 @@ const ChatBot = ({ onBack }: ChatBotProps) => {
 
         <div className="mb-4 flex justify-center">
           <EcoMascot 
-            image={getMascotImage()} 
-            animation="float"
+            image={mascotImage} 
+            animation={isTyping ? "none" : "float"}
             size="md"
           />
         </div>
@@ -145,11 +197,11 @@ const ChatBot = ({ onBack }: ChatBotProps) => {
             onKeyDown={handleKeyPress}
             placeholder="Ask about nature, animals, or the environment..."
             className="flex-1 p-4 rounded-full border-2 border-ecoGreen focus:outline-none focus:border-ecoGreen-dark"
-            disabled={isLoading}
+            disabled={isLoading || isTyping}
           />
           <button
             onClick={handleSendMessage}
-            disabled={isLoading || !input.trim()}
+            disabled={isLoading || !input.trim() || isTyping}
             className="eco-button-primary p-4 rounded-full disabled:opacity-50"
             aria-label="Send message"
           >
@@ -162,4 +214,3 @@ const ChatBot = ({ onBack }: ChatBotProps) => {
 };
 
 export default ChatBot;
-

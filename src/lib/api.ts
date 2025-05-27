@@ -1,6 +1,8 @@
 // api.ts
 const API_BASE_URL = 'http://localhost:5000/api';
 
+
+
 export interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;
