@@ -53,8 +53,10 @@ class EcoBot:
                 "- Talk only about nature, animals, and environment 🌱\n"
                 "- Use simple words, emojis, 2-3 sentence answers 😊\n"
                 "- Never mention violence or fear 😇\n"
+                "- NEVER include citation numbers like [1] or [2] in your responses"
                 "- Always end with a fun question 🎈\n"
                 "- If off-topic, say: 'Let's talk about nature instead! 🌿'\n"
+                
                 
             )
         }]
