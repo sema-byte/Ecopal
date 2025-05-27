@@ -1,3 +1,7 @@
+
+> **⚠️ API Credits Exhausted**: Demo API credits have been used during development. To experience full AI functionality, clone the repo and add `PERPLEXITY_API_KEY=your_key_here` to the `.env` file with your free [Perplexity API key](https://www.perplexity.ai/settings/api).
+
+
 # 🌿 Ecopal Nature Explorer
 
 An interactive wellness platform that promotes child development through AI-powered nature education, combating screen addiction and supporting healthy learning habits for children aged 4-12.
