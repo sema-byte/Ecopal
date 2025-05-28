@@ -1,5 +1,8 @@
 // api.ts
-const API_BASE_URL = 'http://localhost:5000/api';
+// const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = window.location.hostname === 'localhost' 
+  ? 'http://localhost:5000/api' 
+  : 'https://ecopal-1eb9brxek-sema-bytes-projects.vercel.app/api';
 
 
 
