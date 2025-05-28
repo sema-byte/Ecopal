@@ -53,12 +53,24 @@ import json
 from ALL import EcoBot, NatureNews, NatureQuiz
 
 app = Flask(__name__)
-CORS(app)  # This enables CORS for all routes
+CORS(app)
 
 # Initialize our classes
 eco_bot = EcoBot()
 nature_news = NatureNews()
 nature_quiz = NatureQuiz()
+
+# Home page route
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({
+        'message': 'EcoBot API is running!',
+        'endpoints': {
+            'chat': '/api/chat (POST)',
+            'article': '/api/article (GET)', 
+            'quiz': '/api/quiz (GET)'
+        }
+    })
 
 # EcoBot API endpoint
 @app.route('/api/chat', methods=['POST'])
@@ -66,9 +78,8 @@ def chat():
     data = request.json
     user_input = data.get('message', '')
     
-    # If this is the first message, we need to set the name
     if data.get('isFirstMessage', False):
-        eco_bot.name = None  # Reset name for new conversation
+        eco_bot.name = None
     
     response = eco_bot.chat(user_input)
     return jsonify({'response': response})
@@ -90,7 +101,6 @@ def get_quiz():
     }
     mapped_difficulty = difficulty_map.get(difficulty, "easy")
     
-    # We'll use a random category
     quiz_data = nature_quiz.generate_quiz(difficulty=mapped_difficulty)
     return jsonify(quiz_data)
 
