@@ -53,7 +53,7 @@ import json
 from ALL import EcoBot, NatureNews, NatureQuiz
 
 app = Flask(__name__)
-CORS(app)  # This enables CORS for all routes
+CORS(app, origins="*")  # Allow all origins to fix CORS issues
 
 # Initialize our classes
 eco_bot = EcoBot()
