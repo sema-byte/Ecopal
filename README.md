@@ -96,10 +96,10 @@ An interactive wellness platform that promotes child development through AI-powe
    # or
    yarn dev
    ```
-   The React app will run on `http://localhost:3000`
+   The React app will run on ` http://localhost:8080/`
 
 3. **Open your browser**
-   Navigate to `http://localhost:3000` to use the application
+   Navigate to ` http://localhost:8080/` to use the application
 
 ## 📁 Project Structure
 
